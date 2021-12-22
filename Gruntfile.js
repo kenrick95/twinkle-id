@@ -29,7 +29,7 @@ function makeHeader() {
  * |  Please discuss changes on the talk page or on [[WT:Gadget]] before editing.  |
  * |_______________________________________________________________________________|
  *
- * Built from source code at GitHub repository [https://github.com/kenrick95/twinkle-id]
+ * Built from source code at GitHub repository [https://github.com/kenrick95/twinkle-idwiki]
  * All changes should be made in the repository. Please do not attempt to edit this file directly.
 `;
 	if (includeCommitHashInComment) {
@@ -37,9 +37,9 @@ function makeHeader() {
 		header +=
 ` * This build was generated from the source files at the repository as of the commit
  * ${commitSHA}. You can browse the repo at that point in time using this link:
- * https://github.com/kenrick95/twinkle-id/tree/${commitSHA}
+ * https://github.com/kenrick95/twinkle-idwiki/tree/${commitSHA}
  * Changes between two commits of Twinkle can be compared using
- * https://github.com/kenrick95/twinkle-id/compare/COMMIT_HASH_1..COMMIT_HASH_2
+ * https://github.com/kenrick95/twinkle-idwiki/compare/COMMIT_HASH_1..COMMIT_HASH_2
 `;
 	}
 
