@@ -2,6 +2,7 @@
 	"name": "twinkle-idwiki",
 	"version": "1.0.0",
 	"description": "",
+	"private": true,
 	"scripts": {
 		"format": "prettier --write .",
 		"lint": "eslint . --ext .js --ext .ts",
@@ -9,6 +10,7 @@
 		"build": "grunt build",
 		"quickbuild": "webpack",
 		"start": "node scripts/server.js",
+		"deploy": "npm run build && node scripts/deploy.js",
 		"test:prod": "webpack && jest",
 		"test": "env DEBUG=true webpack && jest -i",
 		"test:unit": "webpack && jest --selectProjects unit",
@@ -22,7 +24,7 @@
 	},
 	"author": "kenrick95",
 	"license": "CC-BY-SA-3.0",
-	"homepage": "https://github.com/kenrick95/twinkle-id",
+	"homepage": "https://github.com/kenrick95/twinkle-idwiki",
 	"sideEffects": [
 		"src/globals.ts"
 	],
