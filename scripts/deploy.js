@@ -63,8 +63,13 @@ const deployTargets = [
 
 class Deploy {
 	async deploy() {
+		if (!isOnMasterBranch()) {
+			log('red', '[ERROR] Git working directory is not on master branch.');
+			return;
+		}
 		if (!isGitWorkDirClean()) {
-			log('red', '[WARN] Git working directory is not clean.');
+			log('red', '[ERROR] Git working directory is not clean.');
+			return;
 		}
 		const config = this.loadConfig();
 		await this.getApi(config);
@@ -74,12 +79,14 @@ class Deploy {
 	}
 
 	loadConfig() {
-		try {
-			return require(__dirname + '/credentials.json');
-		} catch (e) {
-			log('red', 'No credentials.json file found.');
-			return {};
+		const tryPaths = [__dirname + '/credentials.json', __dirname + '/../credentials.json'];
+		for (const tryPath of tryPaths) {
+			try {
+				return require(tryPath);
+			} catch (e) {}
 		}
+		log('red', 'No credentials.json file found.');
+		return {};
 	}
 
 	async getApi(config) {
@@ -100,7 +107,10 @@ class Deploy {
 		} else {
 			if (!config.apiUrl) {
 				if (Object.keys(config).length) {
-					log('yellow', 'Tip: you can avoid this prompt by setting the apiUrl as well in credentials.json');
+					log(
+						'yellow',
+						'Tip: you can avoid this prompt by setting the apiUrl as well in credentials.json'
+					);
 				}
 				const site = await input('> Enter sitename (eg. en.wikipedia.org)');
 				config.apiUrl = `https://${site}/w/api.php`;
@@ -158,6 +168,14 @@ function isGitWorkDirClean() {
 	try {
 		execSync('git diff-index --quiet HEAD --');
 		return true;
+	} catch (e) {
+		return false;
+	}
+}
+
+function isOnMasterBranch() {
+	try {
+		return execSync('git rev-parse --abbrev-ref HEAD').toString().trim() === 'master';
 	} catch (e) {
 		return false;
 	}
