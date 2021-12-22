@@ -37,7 +37,7 @@ module.exports = {
 	},
 
 	devServer: {
-		before: function (app, server, compiler) {
+		onBeforeSetupMiddleware: function ({ app }) {
 			app.get('/core/*', function (req, response) {
 				let path = req.url.slice('/core'.length);
 				let ctype = req.url.endsWith('.js')
@@ -57,7 +57,7 @@ module.exports = {
 				response.end(readFile('./dev-loader.js'), 'utf-8');
 			});
 		},
-		contentBase: path.join(__dirname, 'build'),
+		static: path.join(__dirname, 'build'),
 		port: 5500,
 	},
 };

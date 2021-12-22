@@ -1,5 +1,5 @@
 {
-	"name": "twinkle-id",
+	"name": "twinkle-idwiki",
 	"version": "1.0.0",
 	"description": "",
 	"scripts": {
@@ -48,8 +48,8 @@
 		"grunt-contrib-clean": "^2.0.0",
 		"grunt-contrib-concat": "^1.0.1",
 		"grunt-contrib-copy": "^1.0.0",
-		"grunt-replace": "^1.0.1",
-		"grunt-webpack": "^4.0.2",
+		"grunt-replace": "^2.0.2",
+		"grunt-webpack": "^5.0.0",
 		"husky": "^4.3.7",
 		"jest": "^26.6.3",
 		"jest-playwright-preset": "^1.5.1",
@@ -64,7 +64,7 @@
 		"typescript": "4.1.2",
 		"webpack": "^5.33.2",
 		"webpack-cli": "^4.6.0",
-		"webpack-dev-server": "^3.11.2"
+		"webpack-dev-server": "^4.7.0"
 	},
 	"husky": {
 		"hooks": {
