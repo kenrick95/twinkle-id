@@ -41,6 +41,7 @@
 		"@typescript-eslint/eslint-plugin": "^4.22.0",
 		"@typescript-eslint/parser": "^4.22.0",
 		"babel-loader": "^8.2.2",
+		"browserslist-config-wikimedia": "^0.2.0",
 		"chai": "^4.3.4",
 		"chai-as-promised": "^7.1.1",
 		"chalk": "^4.1.0",
@@ -68,6 +69,9 @@
 		"webpack-cli": "^4.6.0",
 		"webpack-dev-server": "^4.7.0"
 	},
+	"browserslist": [
+		"extends browserslist-config-wikimedia/modern"
+	],
 	"husky": {
 		"hooks": {
 			"pre-commit": "lint-staged"
