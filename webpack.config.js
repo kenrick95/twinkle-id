@@ -56,9 +56,13 @@ module.exports = {
 				response.writeHead(200, { 'Content-Type': 'text/javascript; charset=utf-8' });
 				response.end(readFile('./dev-loader.js'), 'utf-8');
 			});
+			app.get('/dev-loader.js', function (req, response) {
+				response.writeHead(200, { 'Content-Type': 'text/javascript; charset=utf-8' });
+				response.end(readFile('./dev-loader.js'), 'utf-8');
+			});
 		},
-		static: path.join(__dirname, 'build'),
 		port: 5500,
+		allowedHosts: ['.wikipedia.org']
 	},
 };
 
